@@ -37,10 +37,10 @@ jobs:
 
       - name: Prepare site
         run: |
-          mkdir -p _site
+          mkdir -p _site/nexus
           cp index.html _site/
           cp CNAME _site/
-          cp -r /tmp/nexus/website/build _site/nexus
+          cp -r /tmp/nexus/website/build/* _site/nexus/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
