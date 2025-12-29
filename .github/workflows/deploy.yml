@@ -23,14 +23,11 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Clone Nexus docs
-        run: |
-          git clone --depth 1 https://github.com/manav03panchal/nexus.git /tmp/nexus
+        run: git clone --depth 1 https://github.com/manav03panchal/nexus.git /tmp/nexus
 
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
-          cache-dependency-path: /tmp/nexus/website/package-lock.json
 
       - name: Build Nexus docs
         working-directory: /tmp/nexus/website
