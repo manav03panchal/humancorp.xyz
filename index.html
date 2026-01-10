@@ -1,67 +1,301 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>humancorp</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
-      background: #0a0a0a;
-      color: #e5e5e5;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-    }
-    .container { max-width: 600px; text-align: center; }
-    h1 { font-size: 3rem; font-weight: 300; margin-bottom: 0.5rem; }
-    .tagline { color: #888; margin-bottom: 3rem; }
-    .projects { display: flex; flex-direction: column; gap: 1rem; }
-    .project {
-      background: #141414;
-      border: 1px solid #262626;
-      border-radius: 8px;
-      padding: 1.5rem;
-      text-decoration: none;
-      color: inherit;
-      transition: all 0.2s ease;
-      text-align: left;
-    }
-    .project:hover { border-color: #7c3aed; background: #1a1a1a; }
-    .project h2 { font-size: 1.25rem; font-weight: 500; margin-bottom: 0.5rem; color: #fff; }
-    .project p { color: #888; font-size: 0.9rem; line-height: 1.5; }
-    .tag {
-      display: inline-block;
-      background: rgba(124, 58, 237, 0.2);
-      color: #a78bfa;
-      padding: 0.25rem 0.5rem;
-      border-radius: 4px;
-      font-size: 0.75rem;
-      margin-top: 0.75rem;
-    }
-    footer { margin-top: 4rem; color: #555; font-size: 0.85rem; }
-    footer a { color: #888; text-decoration: none; }
-    footer a:hover { color: #fff; }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>humancorp</h1>
-    <p class="tagline">projects by manav</p>
-    <div class="projects">
-      <a href="/nexus/" class="project">
-        <h2>Nexus</h2>
-        <p>Distributed task runner with SSH support, DAG-based dependency resolution, and parallel execution.</p>
-        <span class="tag">Elixir</span>
-      </a>
-    </div>
-  </div>
-  <footer>
-    <a href="https://github.com/manav03panchal">GitHub</a>
-  </footer>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>humancorp</title>
+        <meta
+            name="description"
+            content="Open source, local-first, AI agent-led development tools."
+        />
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: Helvetica, Arial, sans-serif;
+                background: #fff;
+                color: #000;
+                min-height: 100vh;
+                transition:
+                    background 0.3s,
+                    color 0.3s;
+            }
+
+            body.dark {
+                background: #000;
+                color: #fff;
+            }
+
+            header {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                padding: 24px 32px;
+                border-bottom: 1px solid #000;
+                background: #fff;
+                z-index: 100;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                transition:
+                    background 0.3s,
+                    border-color 0.3s;
+            }
+
+            body.dark header {
+                background: #000;
+                border-bottom-color: #fff;
+            }
+
+            .logo {
+                font-size: 18px;
+                font-weight: 800;
+                text-decoration: none;
+                color: #000;
+                letter-spacing: -0.02em;
+                transition: color 0.3s;
+            }
+
+            body.dark .logo {
+                color: #fff;
+            }
+
+            .theme-toggle {
+                width: 14px;
+                height: 14px;
+                background: #000;
+                border: none;
+                cursor: pointer;
+                transition: background 0.3s;
+            }
+
+            body.dark .theme-toggle {
+                background: #fff;
+            }
+
+            main {
+                max-width: 900px;
+                margin: 0 auto;
+                padding: 80px 32px 80px;
+                min-height: calc(100vh - 140px);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            .manifesto p {
+                font-size: 16px;
+                line-height: 1.6;
+                margin-bottom: 20px;
+                max-width: 720px;
+            }
+
+            .manifesto strong {
+                font-weight: 800;
+            }
+
+            .contact {
+                margin-top: 32px;
+                padding-top: 24px;
+                border-top: 1px solid #000;
+                transition: border-color 0.3s;
+            }
+
+            body.dark .contact {
+                border-top-color: #fff;
+            }
+
+            .contact p {
+                font-size: 14px;
+                line-height: 1.6;
+            }
+
+            .contact a {
+                color: #000;
+                font-weight: 800;
+                text-decoration: underline;
+                transition: color 0.3s;
+            }
+
+            body.dark .contact a {
+                color: #fff;
+            }
+
+            .contact a:hover {
+                text-decoration: none;
+            }
+
+            footer {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                padding: 24px 32px;
+                border-top: 1px solid #000;
+                background: #fff;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                z-index: 100;
+                transition:
+                    background 0.3s,
+                    border-color 0.3s;
+            }
+
+            body.dark footer {
+                background: #000;
+                border-top-color: #fff;
+            }
+
+            footer span {
+                font-size: 14px;
+                color: #666;
+            }
+
+            .footer-links {
+                display: flex;
+                gap: 24px;
+            }
+
+            .footer-links a {
+                font-size: 14px;
+                color: #000;
+                text-decoration: none;
+                transition: color 0.3s;
+            }
+
+            body.dark .footer-links a {
+                color: #fff;
+            }
+
+            .footer-links a:hover {
+                text-decoration: underline;
+            }
+
+            @media (max-width: 600px) {
+                header,
+                footer {
+                    padding: 20px;
+                }
+
+                main {
+                    padding: 48px 20px 80px;
+                }
+
+                .manifesto p,
+                .contact p {
+                    font-size: 16px;
+                }
+
+                footer {
+                    flex-direction: column;
+                    gap: 16px;
+                    text-align: center;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <a href="/" class="logo">Humancorp.</a>
+            <button
+                class="theme-toggle"
+                onclick="toggleTheme()"
+                aria-label="Toggle theme"
+            ></button>
+        </header>
+
+        <main>
+            <div class="manifesto">
+                <p>
+                    We're tired of SaaS. Tired of companies paying
+                    $50/seat/month for AI wrappers that send their data to
+                    someone else's servers. Tired of tools that stop working
+                    when you stop paying. Tired of software that treats you like
+                    a product.
+                </p>
+
+                <p>
+                    <strong
+                        >Software should work for you, not against you.</strong
+                    >
+                </p>
+
+                <p>
+                    We build open source software. No subscriptions. No vendor
+                    lock-in. No bullsh*t.
+                </p>
+
+                <p>
+                    AI is here to stay. The question is: how far can we push it
+                    to build the greenfield, novel software that you, or the
+                    people around you, actually need?
+                </p>
+
+                <p>
+                    Every line of code we write is public. Fork it. Modify it.
+                    Make it yours. We believe transparency builds trust, and
+                    better software.
+                </p>
+
+                <p>
+                    AI should amplify humans, not replace them. Small teams
+                    punching way above their weight. That's the future we're
+                    building.
+                </p>
+
+                <p>
+                    <strong
+                        >We're not a startup. We're not raising. We're just
+                        building cool sh*t.</strong
+                    >
+                </p>
+
+                <p>
+                    Find your people here. Build together. Bring your own AI,
+                    your own ideas. Let's make sh*t happen.
+                </p>
+            </div>
+
+            <div class="contact">
+                <p>
+                    Who is we? It's always been you. Come back and talk —
+                    <a href="mailto:hi@humancorp.xyz">hi@humancorp.xyz</a>
+                </p>
+            </div>
+        </main>
+
+        <footer>
+            <span>humancorp</span>
+            <div class="footer-links">
+                <a href="projects/index.html">Projects</a>
+                <a href="https://github.com/manav03panchal">GitHub</a>
+                <a href="https://x.com/manav03panchal">X</a>
+            </div>
+        </footer>
+
+        <script>
+            function toggleTheme() {
+                document.body.classList.toggle("dark");
+                localStorage.setItem(
+                    "theme",
+                    document.body.classList.contains("dark") ? "dark" : "light",
+                );
+            }
+
+            // Check saved preference or system preference
+            if (
+                localStorage.getItem("theme") === "dark" ||
+                (!localStorage.getItem("theme") &&
+                    window.matchMedia("(prefers-color-scheme: dark)").matches)
+            ) {
+                document.body.classList.add("dark");
+            }
+        </script>
+    </body>
 </html>
