@@ -34,25 +34,16 @@
             }
 
             header {
-                position: fixed;
-                top: 0;
-                left: 0;
-                right: 0;
                 padding: 24px 32px;
                 border-bottom: 1px solid #000;
-                background: #fff;
-                z-index: 100;
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                transition:
-                    background 0.3s,
-                    border-color 0.3s;
+                transition: border-color 0.3s;
             }
 
             body.dark header {
-                background: #000;
-                border-bottom-color: #fff;
+                border-bottom-color: #333;
             }
 
             .logo {
@@ -82,153 +73,73 @@
             }
 
             main {
-                max-width: 1000px;
+                max-width: 600px;
                 margin: 0 auto;
-                padding: 120px 32px 120px;
-                min-height: calc(100vh - 140px);
+                padding: 80px 32px;
             }
 
             h1 {
                 font-family: "Space Grotesk", sans-serif;
-                font-size: 48px;
+                font-size: 32px;
                 font-weight: 700;
                 letter-spacing: -0.03em;
-                margin-bottom: 64px;
+                margin-bottom: 48px;
             }
 
-            .projects-grid {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-                gap: 24px;
+            .projects-list {
+                list-style: none;
             }
 
-            .project {
-                display: block;
-                padding: 32px;
+            .projects-list li {
+                border-bottom: 1px solid #ddd;
+                transition: border-color 0.3s;
+            }
+
+            body.dark .projects-list li {
+                border-bottom-color: #333;
+            }
+
+            .projects-list a {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 20px 0;
                 text-decoration: none;
                 color: inherit;
-                border: 2px solid;
-                transition: all 0.3s;
-                position: relative;
-                overflow: hidden;
+                transition: opacity 0.2s;
             }
 
-            .project::before {
-                content: "";
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                opacity: 0;
-                transition: opacity 0.3s;
-                z-index: 0;
+            .projects-list a:hover {
+                opacity: 0.6;
             }
 
-            .project:hover::before {
-                opacity: 1;
-            }
-
-            .project > * {
-                position: relative;
-                z-index: 1;
-            }
-
-            .project.nexus {
-                border-color: #e65100;
-            }
-            .project.nexus::before {
-                background: #e8f5e9;
-            }
-            body.dark .project.nexus:hover {
-                color: #000;
-            }
-
-            .project.humantime {
-                border-color: #1565c0;
-            }
-            .project.humantime::before {
-                background: #e3f2fd;
-            }
-            body.dark .project.humantime:hover {
-                color: #000;
-            }
-
-            .project.humanboard {
-                border-color: #c2185b;
-            }
-            .project.humanboard::before {
-                background: #fce4ec;
-            }
-            body.dark .project.humanboard:hover {
-                color: #000;
-            }
-
-            .project:hover {
-                transform: translateY(-4px);
-            }
-
-            .project-title {
+            .project-name {
                 font-family: "Space Grotesk", sans-serif;
-                font-size: 24px;
+                font-size: 18px;
                 font-weight: 700;
-                letter-spacing: -0.02em;
-                margin-bottom: 12px;
-            }
-
-            .project.nexus .project-title {
-                color: #e65100;
-            }
-            .project.humantime .project-title {
-                color: #1565c0;
-            }
-            .project.humanboard .project-title {
-                color: #c2185b;
             }
 
             .project-desc {
                 font-size: 14px;
                 color: #666;
-                line-height: 1.6;
             }
 
-            .project:hover .project-desc {
-                color: #333;
-            }
-
-            .project-arrow {
-                margin-top: 24px;
-                font-size: 20px;
-                opacity: 0;
-                transform: translateX(-10px);
-                transition: all 0.3s;
-            }
-
-            .project:hover .project-arrow {
-                opacity: 1;
-                transform: translateX(0);
+            .arrow {
+                font-size: 18px;
+                color: #999;
             }
 
             footer {
-                position: fixed;
-                bottom: 0;
-                left: 0;
-                right: 0;
                 padding: 24px 32px;
                 border-top: 1px solid #000;
-                background: #fff;
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                z-index: 100;
-                transition:
-                    background 0.3s,
-                    border-color 0.3s;
+                transition: border-color 0.3s;
             }
 
             body.dark footer {
-                background: #000;
-                border-top-color: #fff;
+                border-top-color: #333;
             }
 
             footer span {
@@ -259,42 +170,22 @@
             @media (max-width: 600px) {
                 header {
                     padding: 16px 20px;
-                    position: relative;
+                }
+
+                main {
+                    padding: 40px 20px;
+                }
+
+                h1 {
+                    font-size: 24px;
+                    margin-bottom: 32px;
                 }
 
                 footer {
-                    position: relative;
                     padding: 20px;
                     flex-direction: column;
                     gap: 12px;
                     text-align: center;
-                }
-
-                main {
-                    padding: 20px;
-                    min-height: auto;
-                }
-
-                h1 {
-                    font-size: 28px;
-                    margin-bottom: 32px;
-                }
-
-                .projects-grid {
-                    grid-template-columns: 1fr;
-                    gap: 16px;
-                }
-
-                .project {
-                    padding: 20px;
-                }
-
-                .project-title {
-                    font-size: 20px;
-                }
-
-                .project-arrow {
-                    display: none;
                 }
             }
         </style>
@@ -311,41 +202,49 @@
 
         <main>
             <h1>Projects</h1>
-            <div class="projects-grid">
-                <a
-                    href="../nexus_l/index.html"
-                    class="project nexus"
-                    target="_blank"
-                    rel="noopener"
-                >
-                    <div class="project-title">Nexus</div>
-                    <p class="project-desc">
-                        Distributed task runner with SSH support, DAG-based
-                        dependency resolution, and parallel execution.
-                    </p>
-                    <div class="project-arrow">→</div>
-                </a>
-                <a
-                    href="../humantime/index.html"
-                    class="project humantime"
-                    target="_blank"
-                    rel="noopener"
-                >
-                    <div class="project-title">Humantime</div>
-                    <p class="project-desc">CLI time tracking tool.</p>
-                    <div class="project-arrow">→</div>
-                </a>
-                <a
-                    href="../humanboard/index.html"
-                    class="project humanboard"
-                    target="_blank"
-                    rel="noopener"
-                >
-                    <div class="project-title">Humanboard</div>
-                    <p class="project-desc">Project management board.</p>
-                    <div class="project-arrow">→</div>
-                </a>
-            </div>
+            <ul class="projects-list">
+                <li>
+                    <a
+                        href="../nexus_l/index.html"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        <div>
+                            <div class="project-name">Nexus</div>
+                            <div class="project-desc">
+                                Distributed task runner
+                            </div>
+                        </div>
+                        <span class="arrow">→</span>
+                    </a>
+                </li>
+                <li>
+                    <a
+                        href="../humantime/index.html"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        <div>
+                            <div class="project-name">Humantime</div>
+                            <div class="project-desc">CLI time tracking</div>
+                        </div>
+                        <span class="arrow">→</span>
+                    </a>
+                </li>
+                <li>
+                    <a
+                        href="../humanboard/index.html"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        <div>
+                            <div class="project-name">Humanboard</div>
+                            <div class="project-desc">Visual board app</div>
+                        </div>
+                        <span class="arrow">→</span>
+                    </a>
+                </li>
+            </ul>
         </main>
 
         <footer>
