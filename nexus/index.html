@@ -26,7 +26,6 @@
                 background: #e8f5e9;
                 color: #000;
                 min-height: 100vh;
-                overflow: hidden;
             }
 
             canvas {
@@ -99,12 +98,18 @@
                 }
 
                 .ascii-title {
-                    font-size: 8px;
+                    font-size: 6px;
+                    overflow-x: auto;
                 }
 
                 .tagline {
-                    font-size: 14px;
-                    max-width: 280px;
+                    font-size: 16px;
+                    max-width: 100%;
+                    text-align: left;
+                }
+
+                .bottom-right {
+                    align-items: flex-start;
                 }
             }
         </style>

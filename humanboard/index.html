@@ -23,7 +23,6 @@
                 background: #fce4ec;
                 color: #000;
                 min-height: 100vh;
-                overflow: hidden;
             }
 
             canvas {
@@ -96,12 +95,18 @@
                 }
 
                 .ascii-title {
-                    font-size: 8px;
+                    font-size: 5px;
+                    overflow-x: auto;
                 }
 
                 .tagline {
-                    font-size: 14px;
-                    max-width: 280px;
+                    font-size: 16px;
+                    max-width: 100%;
+                    text-align: left;
+                }
+
+                .bottom-right {
+                    align-items: flex-start;
                 }
             }
         </style>
@@ -110,12 +115,14 @@
         <canvas id="snake"></canvas>
         <main>
             <div class="hero">
-                <pre class="ascii-title"> __    __   __    __  ___  ___      __      _____  __  _______    ______        __      _______   ______
+                <pre class="ascii-title">
+ __    __   __    __  ___  ___      __      _____  __  _______    ______        __      _______   ______
 |  |  |  | |  |  |  ||   \/   |    /  \    |   \ \|  ||   _   \  /  __  \      /  \    |   _   \ |   _  \
 |  |__|  | |  |  |  ||  \  /  |   /    \   |    \    ||  |_)  | |  |  |  |    /    \   |  |_)  | |  | |  |
 |   __   | |  |  |  ||  |\/|  |  /  /\  \  |  |\    | |   _  <  |  |  |  |   /  /\  \  |      /  |  | |  |
 |  |  |  | |  `--'  ||  |  |  | /  ____  \ |  | \   | |  |_)  | |  `--'  |  /  ____  \ |  |\  \  |  |_|  |
-|__|  |__|  \______/ |__|  |__|/__/    \__\|__|  \__| |______/   \______/  /__/    \__\|__| \__\ |______/</pre>
+|__|  |__|  \______/ |__|  |__|/__/    \__\|__|  \__| |______/   \______/  /__/    \__\|__| \__\ |______/</pre
+                >
                 <div class="bottom-right">
                     <p class="tagline">
                         "Kanban for humans. No login, no cloud, just boards."
