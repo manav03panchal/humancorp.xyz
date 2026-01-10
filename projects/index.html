@@ -23,6 +23,8 @@
                 background: #fff;
                 color: #000;
                 min-height: 100vh;
+                display: flex;
+                flex-direction: column;
                 transition:
                     background 0.3s,
                     color 0.3s;
@@ -35,15 +37,14 @@
 
             header {
                 padding: 24px 32px;
-                border-bottom: 1px solid #000;
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                transition: border-color 0.3s;
-            }
-
-            body.dark header {
-                border-bottom-color: #333;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 10;
             }
 
             .logo {
@@ -72,74 +73,75 @@
                 background: #fff;
             }
 
-            main {
-                max-width: 600px;
-                margin: 0 auto;
-                padding: 80px 32px;
-            }
-
-            h1 {
-                font-family: "Space Grotesk", sans-serif;
-                font-size: 32px;
-                font-weight: 700;
-                letter-spacing: -0.03em;
-                margin-bottom: 48px;
-            }
-
             .projects-list {
                 list-style: none;
+                flex: 1;
+                display: flex;
+                flex-direction: column;
             }
 
             .projects-list li {
+                flex: 1;
                 border-bottom: 1px solid #ddd;
-                transition: border-color 0.3s;
+                display: flex;
             }
 
             body.dark .projects-list li {
-                border-bottom-color: #333;
+                border-bottom-color: #222;
             }
 
             .projects-list a {
+                flex: 1;
                 display: flex;
-                justify-content: space-between;
                 align-items: center;
-                padding: 20px 0;
+                justify-content: space-between;
+                padding: 0 32px;
                 text-decoration: none;
                 color: inherit;
-                transition: opacity 0.2s;
+                transition: background 0.2s;
             }
 
             .projects-list a:hover {
-                opacity: 0.6;
+                background: rgba(0, 0, 0, 0.03);
+            }
+
+            body.dark .projects-list a:hover {
+                background: rgba(255, 255, 255, 0.03);
+            }
+
+            .project-info {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
             }
 
             .project-name {
                 font-family: "Space Grotesk", sans-serif;
-                font-size: 18px;
+                font-size: 48px;
                 font-weight: 700;
+                letter-spacing: -0.03em;
             }
 
             .project-desc {
-                font-size: 14px;
+                font-size: 16px;
                 color: #666;
             }
 
             .arrow {
-                font-size: 18px;
+                font-size: 32px;
                 color: #999;
+                transition: transform 0.2s;
+            }
+
+            .projects-list a:hover .arrow {
+                transform: translateX(8px);
             }
 
             footer {
                 padding: 24px 32px;
-                border-top: 1px solid #000;
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                transition: border-color 0.3s;
-            }
-
-            body.dark footer {
-                border-top-color: #333;
             }
 
             footer span {
@@ -169,16 +171,23 @@
 
             @media (max-width: 600px) {
                 header {
-                    padding: 16px 20px;
+                    padding: 20px;
                 }
 
-                main {
-                    padding: 40px 20px;
+                .project-name {
+                    font-size: 28px;
                 }
 
-                h1 {
+                .project-desc {
+                    font-size: 14px;
+                }
+
+                .projects-list a {
+                    padding: 0 20px;
+                }
+
+                .arrow {
                     font-size: 24px;
-                    margin-bottom: 32px;
                 }
 
                 footer {
@@ -200,52 +209,43 @@
             ></button>
         </header>
 
-        <main>
-            <h1>Projects</h1>
-            <ul class="projects-list">
-                <li>
-                    <a
-                        href="../nexus_l/index.html"
-                        target="_blank"
-                        rel="noopener"
-                    >
-                        <div>
-                            <div class="project-name">Nexus</div>
-                            <div class="project-desc">
-                                Distributed task runner
-                            </div>
-                        </div>
-                        <span class="arrow">→</span>
-                    </a>
-                </li>
-                <li>
-                    <a
-                        href="../humantime/index.html"
-                        target="_blank"
-                        rel="noopener"
-                    >
-                        <div>
-                            <div class="project-name">Humantime</div>
-                            <div class="project-desc">CLI time tracking</div>
-                        </div>
-                        <span class="arrow">→</span>
-                    </a>
-                </li>
-                <li>
-                    <a
-                        href="../humanboard/index.html"
-                        target="_blank"
-                        rel="noopener"
-                    >
-                        <div>
-                            <div class="project-name">Humanboard</div>
-                            <div class="project-desc">Visual board app</div>
-                        </div>
-                        <span class="arrow">→</span>
-                    </a>
-                </li>
-            </ul>
-        </main>
+        <ul class="projects-list">
+            <li>
+                <a href="../nexus_l/index.html" target="_blank" rel="noopener">
+                    <div class="project-info">
+                        <div class="project-name">Nexus</div>
+                        <div class="project-desc">Distributed task runner</div>
+                    </div>
+                    <span class="arrow">→</span>
+                </a>
+            </li>
+            <li>
+                <a
+                    href="../humantime/index.html"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    <div class="project-info">
+                        <div class="project-name">Humantime</div>
+                        <div class="project-desc">CLI time tracking</div>
+                    </div>
+                    <span class="arrow">→</span>
+                </a>
+            </li>
+            <li>
+                <a
+                    href="../humanboard/index.html"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    <div class="project-info">
+                        <div class="project-name">Humanboard</div>
+                        <div class="project-desc">Visual board app</div>
+                    </div>
+                    <span class="arrow">→</span>
+                </a>
+            </li>
+        </ul>
 
         <footer>
             <span>humancorp</span>
