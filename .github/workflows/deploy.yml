@@ -43,6 +43,7 @@ jobs:
           cp -r projects _site/
           cp -r humantime _site/
           cp -r humanboard _site/
+          cp -r nexus_l _site/
           touch _site/.nojekyll
           cp -r /tmp/nexus/website/build/* _site/nexus/
 
