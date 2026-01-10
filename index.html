@@ -81,11 +81,7 @@
             main {
                 max-width: 900px;
                 margin: 0 auto;
-                padding: 80px 32px 80px;
-                min-height: calc(100vh - 140px);
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
+                padding: 100px 32px 100px;
             }
 
             .manifesto p {
@@ -180,22 +176,30 @@
             @media (max-width: 600px) {
                 header,
                 footer {
-                    padding: 20px;
+                    padding: 16px 20px;
                 }
 
                 main {
-                    padding: 48px 20px 80px;
+                    padding: 80px 20px 100px;
                 }
 
-                .manifesto p,
+                .manifesto p {
+                    font-size: 15px;
+                    margin-bottom: 16px;
+                }
+
                 .contact p {
-                    font-size: 16px;
+                    font-size: 13px;
                 }
 
                 footer {
                     flex-direction: column;
-                    gap: 16px;
+                    gap: 12px;
                     text-align: center;
+                }
+
+                .footer-links {
+                    gap: 16px;
                 }
             }
         </style>
