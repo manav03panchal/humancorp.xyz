@@ -40,6 +40,9 @@ jobs:
           mkdir -p _site/nexus
           cp index.html _site/
           cp CNAME _site/
+          cp -r projects _site/
+          cp -r humantime _site/
+          cp -r humanboard _site/
           touch _site/.nojekyll
           cp -r /tmp/nexus/website/build/* _site/nexus/
 
