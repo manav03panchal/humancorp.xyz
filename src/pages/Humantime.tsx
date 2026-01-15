@@ -1,45 +1,43 @@
-import { Button } from '../components/Button';
+import { PageLayout } from '../components/PageLayout';
+import { Card } from '../components/Card';
 import styles from './ProductLanding.module.css';
 
-const ASCII_ART = ` /  |                     /   o
-(___|      _ _  ___  ___ (___    _ _  ___
-|   )|   )| | )|   )|   )|    | | | )|___
-|  / |__/ |  / |__/||  / |__  | |  / |___`;
+const ASCII_ART = `( _       _ _   _   _  _)_ o  _ _   _
+ ) ) (_( ) ) ) (_( ) ) (_  ( ) ) ) )_)
+                                  (_ `;
 
-export function Humantime() {
+interface HumantimeProps {
+  onOpenSettings?: (tab: 'mode' | 'fonts' | 'tint') => void;
+}
+
+export function Humantime({ onOpenSettings }: HumantimeProps) {
   return (
-    <div className={styles.container} data-accent="blue">
-      <main className={styles.main}>
-        <div className={styles.hero}>
-          <pre className={styles.ascii} data-accent="blue">
-            {ASCII_ART}
-          </pre>
-          <div className={styles.content}>
-            <p className={styles.tagline}>
-              "Time tracking that speaks human. Local-first. No cloud required."
-            </p>
-            <div className={styles.buttons}>
-              <Button href="https://github.com/manav03panchal/humantime">
-                View on GitHub
-              </Button>
-              <Button
-                variant="secondary"
-                href="https://github.com/manav03panchal/humantime#installation"
-              >
-                Installation
-              </Button>
-            </div>
-          </div>
-        </div>
+    <PageLayout onOpenSettings={onOpenSettings} showSidebar={false}>
+      <Card title="HUMANTIME">
+        <pre className={styles.ascii}>{ASCII_ART}</pre>
+      </Card>
 
-        <div className={styles.section}>
-          <p>
-            A CLI time tracker that understands natural language. Track your
-            work with simple commands, generate reports, and keep everything
-            local. Built for developers who value their privacy.
-          </p>
+      <Card title="ABOUT">
+        <p className={styles.tagline}>
+          Time tracking that speaks human. Local-first. No cloud required.
+        </p>
+        <p className={styles.description}>
+          A CLI time tracker that understands natural language. Track your
+          work with simple commands, generate reports, and keep everything
+          local. Built for developers who value their privacy.
+        </p>
+      </Card>
+
+      <Card title="LINKS">
+        <div className={styles.links}>
+          <a href="https://github.com/manav03panchal/humantime" className={styles.link} target="_blank" rel="noopener noreferrer">
+            ├ GitHub Repository →
+          </a>
+          <a href="https://github.com/manav03panchal/humantime#installation" className={styles.link} target="_blank" rel="noopener noreferrer">
+            ├ Installation Guide →
+          </a>
         </div>
-      </main>
-    </div>
+      </Card>
+    </PageLayout>
   );
 }

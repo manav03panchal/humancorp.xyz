@@ -1,12 +1,15 @@
-import { Navigation } from '../components/Navigation';
-import { Footer } from '../components/Footer';
+import { PageLayout } from '../components/PageLayout';
+import { Card } from '../components/Card';
 import styles from './Home.module.css';
 
-export function Home() {
+interface HomeProps {
+  onOpenSettings?: (tab: 'mode' | 'fonts' | 'tint') => void;
+}
+
+export function Home({ onOpenSettings }: HomeProps) {
   return (
-    <>
-      <Navigation fixed />
-      <main className={styles.main}>
+    <PageLayout onOpenSettings={onOpenSettings}>
+      <Card title="MANIFESTO">
         <div className={styles.manifesto}>
           <p>
             We're tired of SaaS. Tired of companies paying $50/seat/month for AI
@@ -15,8 +18,8 @@ export function Home() {
             treats you like a product.
           </p>
 
-          <p>
-            <strong>Software should work for you, not against you.</strong>
+          <p className={styles.emphasis}>
+            Software should work for you, not against you.
           </p>
 
           <p>
@@ -40,11 +43,9 @@ export function Home() {
             above their weight. That's the future we're building.
           </p>
 
-          <p>
-            <strong>
-              We're not a startup. We're not raising. We're just building cool
-              sh*t.
-            </strong>
+          <p className={styles.emphasis}>
+            We're not a startup. We're not raising. We're just building cool
+            sh*t.
           </p>
 
           <p>
@@ -52,15 +53,14 @@ export function Home() {
             ideas. Let's make sh*t happen.
           </p>
         </div>
+      </Card>
 
-        <div className={styles.contact}>
-          <p>
-            Who is we? It's always been you. Come back and talk —{' '}
-            <a href="mailto:hi@humancorp.xyz">hi@humancorp.xyz</a>
-          </p>
-        </div>
-      </main>
-      <Footer fixed />
-    </>
+      <Card title="CONTACT">
+        <p className={styles.contact}>
+          Who is we? It's always been you. Come back and talk —{' '}
+          <a href="mailto:hi@humancorp.xyz">hi@humancorp.xyz</a>
+        </p>
+      </Card>
+    </PageLayout>
   );
 }
