@@ -6,13 +6,9 @@ const ASCII_ART = `( _       _ _   _   _  _)_ o  _ _   _
  ) ) (_( ) ) ) (_( ) ) (_  ( ) ) ) )_)
                                   (_ `;
 
-interface HumantimeProps {
-  onOpenSettings?: (tab: 'mode' | 'fonts' | 'tint') => void;
-}
-
-export function Humantime({ onOpenSettings }: HumantimeProps) {
+export function Humantime() {
   return (
-    <PageLayout onOpenSettings={onOpenSettings} showSidebar={false}>
+    <PageLayout>
       <Card title="HUMANTIME">
         <pre className={styles.ascii}>{ASCII_ART}</pre>
       </Card>

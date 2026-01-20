@@ -11,13 +11,9 @@ const ASCII_ART = ` ________   _______      ___    ___ ___  ___  ________
     \\|__| \\|__|\\|_______/__/ /\\ __\\    \\|_______|\\_________\\
                         |__|/ \\|__|             \\|_________|`;
 
-interface NexusProps {
-  onOpenSettings?: (tab: 'mode' | 'fonts' | 'tint') => void;
-}
-
-export function Nexus({ onOpenSettings }: NexusProps) {
+export function Nexus() {
   return (
-    <PageLayout onOpenSettings={onOpenSettings} showSidebar={false}>
+    <PageLayout>
       <Card title="NEXUS">
         <pre className={styles.ascii}>{ASCII_ART}</pre>
       </Card>
