@@ -1,0 +1,208 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  z-index: 10;
+}
+
+.modeToggle {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.modeBtn {
+  font-family: var(--font-ndot57);
+  font-size: 1rem;
+  font-weight: 700;
+  color: #000;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: none;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  opacity: 0.4;
+}
+
+.modeBtn:hover {
+  opacity: 0.8;
+  background: none;
+}
+
+.modeActive {
+  opacity: 1;
+}
+
+.header[data-padding-mode="dark"] .modeBtn,
+.header[data-padding-mode="dark"] .modeSep {
+  color: #fff;
+}
+
+.modeSep {
+  font-family: var(--font-ndot57);
+  font-size: 1rem;
+  font-weight: 700;
+  color: #000;
+}
+
+.nav {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav a {
+  font-family: var(--font-ndot57);
+  font-size: 1rem;
+  font-weight: 700;
+  color: #000;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: none;
+  padding: 0;
+}
+
+.nav a:hover {
+  opacity: 0.6;
+  background: none;
+}
+
+.header[data-padding-mode="dark"] .nav a {
+  color: #fff;
+}
+
+/* Logo behind overlay */
+.logo {
+  position: fixed;
+  bottom: 4rem;
+  left: 4rem;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 800;
+  font-size: clamp(3rem, 8vw, 6rem);
+  margin: 0;
+  color: #ffffff;
+  z-index: 0;
+}
+
+/* Content Area */
+.content {
+  position: fixed;
+  top: 3rem;
+  left: 3rem;
+  right: 3rem;
+  bottom: 3rem;
+  overflow-y: auto;
+  padding: 4rem;
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 1;
+}
+
+.title {
+  font-family: var(--font-ntype82);
+  font-size: 4rem;
+  font-weight: 400;
+  margin: 0 0 3rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.section {
+  margin-bottom: 3rem;
+  max-width: 800px;
+}
+
+.section h2 {
+  font-family: var(--font-ntype82);
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin: 0 0 1.5rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.7;
+}
+
+.section p {
+  font-family: var(--font-ntype82);
+  font-size: 1.5rem;
+  line-height: 1.8;
+  margin: 0;
+}
+
+.section a {
+  color: #fff;
+  text-decoration: underline;
+  background: none;
+}
+
+.section a:hover {
+  opacity: 0.7;
+  background: none;
+}
+
+/* Projects */
+.projectList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.projectCard {
+  display: block;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-decoration: none;
+  color: #fff;
+  background: none;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.projectCard:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.projectHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.projectName {
+  font-family: var(--font-ntype82);
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.projectStatus {
+  font-family: var(--font-ndot57);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.6;
+}
+
+.projectDesc {
+  font-family: var(--font-ntype82);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+  opacity: 0.8;
+}

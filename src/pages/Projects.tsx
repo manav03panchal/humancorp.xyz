@@ -1,43 +1,77 @@
-import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import { PageLayout } from '../components/PageLayout';
-import { Card } from '../components/Card';
-import { TreeView } from '../components/TreeView';
-import styles from './Projects.module.css';
+import styles from './ContentPage.module.css';
 
-interface ProjectsProps {
-  onOpenSettings?: (tab: 'mode' | 'fonts' | 'tint') => void;
-}
+const projects = [
+  {
+    name: 'Humanboard',
+    description: 'A minimal, keyboard-driven task board for humans who hate bloated project management tools.',
+    link: '/humanboard',
+    status: 'Beta'
+  },
+  {
+    name: 'Humantime',
+    description: 'Time tracking that respects your privacy. Local-first, no cloud required.',
+    link: '/humantime',
+    status: 'Active'
+  },
+  {
+    name: 'Nexus',
+    description: 'Connect your tools without giving away your data. Self-hosted integrations.',
+    link: '/nexus',
+    status: 'Active'
+  }
+];
 
-export function Projects({ onOpenSettings }: ProjectsProps) {
-  const navigate = useNavigate();
+export function Projects() {
+  const [isDark, setIsDark] = useState(() => localStorage.getItem('theme') === 'dark');
+
+  useEffect(() => {
+    document.body.setAttribute('data-padding-mode', isDark ? 'dark' : 'light');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  }, [isDark]);
 
   return (
-    <PageLayout onOpenSettings={onOpenSettings}>
-      <Card title="PROJECTS">
-        <p className={styles.intro}>
-          Open source tools built for humans. Fork them. Break them. Make them yours.
-        </p>
-
-        <div className={styles.tree}>
-          <TreeView title="humancorp" isRoot defaultValue={true}>
-            <TreeView title="nexus [active]" defaultValue={true} onClick={() => navigate('/nexus_l')}>
-              <TreeView title="Distributed task runner" isFile />
-              <TreeView title="SSH-based orchestration" isFile />
-              <TreeView title="YAML configs" isFile />
-            </TreeView>
-            <TreeView title="humantime [active]" defaultValue={true} onClick={() => navigate('/humantime')}>
-              <TreeView title="CLI time tracker" isFile />
-              <TreeView title="Natural language input" isFile />
-              <TreeView title="Local-first storage" isFile />
-            </TreeView>
-            <TreeView title="humanboard [beta]" defaultValue={true} onClick={() => navigate('/humanboard')}>
-              <TreeView title="Visual board app" isFile />
-              <TreeView title="Infinite zoom/pan" isFile />
-              <TreeView title="Built in Rust" isFile />
-            </TreeView>
-          </TreeView>
+    <PageLayout>
+      <header className={styles.header} data-padding-mode={isDark ? 'dark' : 'light'}>
+        <div className={styles.modeToggle}>
+          <button
+            className={`${styles.modeBtn} ${!isDark ? styles.modeActive : ''}`}
+            onClick={() => setIsDark(false)}
+          >
+            Light
+          </button>
+          <span className={styles.modeSep}>/</span>
+          <button
+            className={`${styles.modeBtn} ${isDark ? styles.modeActive : ''}`}
+            onClick={() => setIsDark(true)}
+          >
+            Dark
+          </button>
         </div>
-      </Card>
+        <nav className={styles.nav}>
+          <a href="/">Home</a>
+          <a href="/about">About</a>
+          <a href="https://github.com/manav03panchal" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </nav>
+      </header>
+
+      <h1 className={styles.logo}>Humancorp.</h1>
+      <main className={styles.content}>
+        <h1 className={styles.title}>Projects</h1>
+
+        <div className={styles.projectList}>
+          {projects.map((project) => (
+            <a key={project.name} href={project.link} className={styles.projectCard}>
+              <div className={styles.projectHeader}>
+                <h2 className={styles.projectName}>{project.name}</h2>
+                <span className={styles.projectStatus}>{project.status}</span>
+              </div>
+              <p className={styles.projectDesc}>{project.description}</p>
+            </a>
+          ))}
+        </div>
+      </main>
     </PageLayout>
   );
 }
