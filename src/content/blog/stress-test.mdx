@@ -1,0 +1,170 @@
+export const meta = {
+  title: 'MDX Stress Test: Code, Lists, and Everything',
+  date: 'Jan 20, 2026',
+  slug: 'stress-test',
+  excerpt: 'A comprehensive test of all MDX features including code blocks, lists, blockquotes, and more.'
+}
+
+# MDX Stress Test
+
+This post tests every markdown feature to make sure our blog styling holds up.
+
+## Code Blocks
+
+Here's some JavaScript:
+
+```javascript
+const humancorp = {
+  name: 'Humancorp',
+  mission: 'Building cool shit',
+  principles: ['local-first', 'open-source', 'no-bullshit']
+};
+
+async function buildTheFuture() {
+  const ideas = await generateIdeas();
+  const code = await writeCode(ideas);
+  return ship(code);
+}
+
+// This is a comment
+buildTheFuture().then(console.log);
+```
+
+And some TypeScript with types:
+
+```typescript
+interface Project {
+  name: string;
+  status: 'active' | 'beta' | 'deprecated';
+  stars: number;
+}
+
+const projects: Project[] = [
+  { name: 'humanboard', status: 'beta', stars: 420 },
+  { name: 'humantime', status: 'active', stars: 1337 },
+  { name: 'nexus', status: 'active', stars: 69 }
+];
+
+function getActiveProjects(projects: Project[]): Project[] {
+  return projects.filter(p => p.status === 'active');
+}
+```
+
+Some Python:
+
+```python
+def train_model(data, epochs=100):
+    """Train the model on local data. No cloud needed."""
+    model = LocalFirstModel()
+
+    for epoch in range(epochs):
+        loss = model.fit(data)
+        print(f"Epoch {epoch}: loss = {loss:.4f}")
+
+    return model
+
+if __name__ == "__main__":
+    train_model(load_data("./local/data.csv"))
+```
+
+Inline code looks like `const x = 42` or `npm install` in a sentence.
+
+## Lists
+
+### Unordered List
+
+- First item in the list
+- Second item with **bold text**
+- Third item with `inline code`
+- Nested items:
+  - Nested one
+  - Nested two
+  - Nested three
+- Back to top level
+
+### Ordered List
+
+1. First step: Clone the repo
+2. Second step: Install dependencies
+3. Third step: Run the dev server
+4. Fourth step: Ship it
+5. Fifth step: Profit (optional)
+
+## Blockquotes
+
+> Software should work for you, not against you. We build open source software. No subscriptions. No vendor lock-in. No bullshit.
+
+And a longer quote:
+
+> The future isn't massive corporations with thousands of engineers. It's small teams of 2-5 people building things that matter. Why hire 50 people when 5 people with AI can move faster, iterate quicker, and stay focused?
+
+## Text Formatting
+
+This is **bold text** and this is *italic text* and this is ***bold italic***.
+
+You can also use ~~strikethrough~~ if needed.
+
+Here's a [link to GitHub](https://github.com) in the middle of text.
+
+## Headings
+
+### This is H3
+
+Some content under H3.
+
+#### This is H4
+
+Some content under H4.
+
+##### This is H5
+
+Some content under H5.
+
+## Horizontal Rule
+
+Content above the line.
+
+---
+
+Content below the line.
+
+## Tables
+
+| Feature | Status | Priority |
+|---------|--------|----------|
+| Local-first storage | Done | High |
+| AI integration | In Progress | High |
+| Cloud sync (optional) | Planned | Low |
+| Mobile app | Planned | Medium |
+
+## Mixed Content
+
+Here's a complex section with multiple elements:
+
+1. **Step one**: Run this command:
+   ```bash
+   git clone https://github.com/humancorp/project.git
+   cd project
+   npm install
+   ```
+
+2. **Step two**: Configure the environment:
+   - Copy `.env.example` to `.env`
+   - Set `DATABASE_URL` to your local path
+   - Set `AI_PROVIDER` to your preferred option
+
+3. **Step three**: Start building:
+   > Remember: Every line of code we write is public. Fork it. Modify it. Make it yours.
+
+## Final Thoughts
+
+If you made it this far, the blog is working. Ship it.
+
+```
+    _    _ _    _ __  __          _   _  _____ ____  _____  _____
+   | |  | | |  | |  \/  |   /\   | \ | |/ ____/ __ \|  __ \|  __ \
+   | |__| | |  | | \  / |  /  \  |  \| | |   | |  | | |__) | |__) |
+   |  __  | |  | | |\/| | / /\ \ | . ` | |   | |  | |  _  /|  ___/
+   | |  | | |__| | |  | |/ ____ \| |\  | |___| |__| | | \ \| |
+   |_|  |_|\____/|_|  |_/_/    \_\_| \_|\_____\____/|_|  \_\_|
+```

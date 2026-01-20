@@ -2,6 +2,100 @@
 
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&family=Fira+Code:wght@400;500;600;700&family=Source+Code+Pro:wght@400;500;600;700&display=swap');
 
+/* Prism Syntax Highlighting - Custom Dark Theme */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #e0e0e0;
+  text-shadow: none;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.6;
+  tab-size: 2;
+  hyphens: none;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #6a737d;
+}
+
+.token.punctuation {
+  color: #a0a0a0;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: #79c0ff;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: #a5d6ff;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  color: #d2a8ff;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  color: #ff7b72;
+}
+
+.token.function,
+.token.class-name {
+  color: #d2a8ff;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+  color: #ffa657;
+}
+
+/* Nothing Fonts */
+@font-face {
+  font-family: 'Ndot57';
+  src: url('/fonts/Ndot57-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Ndot55';
+  src: url('/fonts/Ndot55-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'NType82';
+  src: url('/fonts/NType82-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* Reset */
 *, *::before, *::after {
   margin: 0;
@@ -14,6 +108,9 @@
   --font-mono: 'JetBrains Mono', monospace;
   --font-system: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
   --font-serif: Georgia, 'Times New Roman', serif;
+  --font-ndot57: 'Ndot57', sans-serif;
+  --font-ndot55: 'Ndot55', sans-serif;
+  --font-ntype82: 'NType82', sans-serif;
 
   /* Typography */
   --font-size-xs: 11px;
@@ -105,9 +202,14 @@ body {
   font-size: var(--font-size-base);
   line-height: var(--line-height);
   color: var(--color-text);
-  background: var(--color-bg);
+  background: #f5f5f0;
   min-height: 100vh;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  padding: 3rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body[data-padding-mode="dark"] {
+  background: #0a0a0a;
 }
 
 #root {
@@ -121,20 +223,27 @@ body {
 /* Video Background */
 .video-bg {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 3rem;
+  left: 3rem;
+  right: 3rem;
+  bottom: 3rem;
+  width: calc(100% - 6rem);
+  height: calc(100% - 6rem);
   z-index: 0;
-  opacity: 0.06;
   pointer-events: none;
 }
 
-[data-theme="dark"] .video-bg {
-  opacity: 0.08;
+.video-bg a[href*="unicorn.studio"],
+.video-bg [class*="watermark"],
+.video-bg [class*="badge"],
+.video-bg > div > a {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
 }
 
-.video-bg video {
+.video-bg video,
+.video-bg img {
   width: 100%;
   height: 100%;
   object-fit: cover;

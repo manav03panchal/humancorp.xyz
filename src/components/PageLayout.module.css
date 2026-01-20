@@ -1,32 +1,5 @@
-.container {
-  display: flex;
-  justify-content: space-between;
-  padding-top: 60px;
-  min-height: 100vh;
-}
-
 .main {
-  flex: 1;
-  max-width: 720px;
-  padding: var(--space-xl) var(--space-lg) var(--space-2xl);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-lg);
-}
-
-@media (max-width: 900px) {
-  .container {
-    justify-content: flex-start;
-  }
-
-  .main {
-    max-width: 100%;
-  }
-}
-
-@media (max-width: 600px) {
-  .main {
-    padding: var(--space-lg) var(--space-md) var(--space-xl);
-    gap: var(--space-md);
-  }
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
 }

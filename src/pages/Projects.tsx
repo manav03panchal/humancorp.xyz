@@ -1,43 +1,61 @@
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { PageLayout } from '../components/PageLayout';
-import { Card } from '../components/Card';
-import { TreeView } from '../components/TreeView';
-import styles from './Projects.module.css';
+import { useTheme } from '../context/ThemeContext';
+import styles from './ContentPage.module.css';
 
-interface ProjectsProps {
-  onOpenSettings?: (tab: 'mode' | 'fonts' | 'tint') => void;
-}
+const projects = [
+  { name: 'Humanboard', github: 'https://github.com/manav03panchal/humanboard' },
+  { name: 'Humantime', github: 'https://github.com/manav03panchal/humantime' },
+  { name: 'Nexus', github: 'https://github.com/manav03panchal/nexus' },
+  { name: 'Humanjournal', github: 'https://github.com/manav03panchal/humanjournal', inDev: true },
+  { name: 'Humaninput', github: 'https://github.com/manav03panchal/humaninput', inDev: true },
+];
 
-export function Projects({ onOpenSettings }: ProjectsProps) {
-  const navigate = useNavigate();
+export function Projects() {
+  const { theme, setTheme } = useTheme();
+  const isDark = theme === 'dark';
 
   return (
-    <PageLayout onOpenSettings={onOpenSettings}>
-      <Card title="PROJECTS">
-        <p className={styles.intro}>
-          Open source tools built for humans. Fork them. Break them. Make them yours.
-        </p>
-
-        <div className={styles.tree}>
-          <TreeView title="humancorp" isRoot defaultValue={true}>
-            <TreeView title="nexus [active]" defaultValue={true} onClick={() => navigate('/nexus_l')}>
-              <TreeView title="Distributed task runner" isFile />
-              <TreeView title="SSH-based orchestration" isFile />
-              <TreeView title="YAML configs" isFile />
-            </TreeView>
-            <TreeView title="humantime [active]" defaultValue={true} onClick={() => navigate('/humantime')}>
-              <TreeView title="CLI time tracker" isFile />
-              <TreeView title="Natural language input" isFile />
-              <TreeView title="Local-first storage" isFile />
-            </TreeView>
-            <TreeView title="humanboard [beta]" defaultValue={true} onClick={() => navigate('/humanboard')}>
-              <TreeView title="Visual board app" isFile />
-              <TreeView title="Infinite zoom/pan" isFile />
-              <TreeView title="Built in Rust" isFile />
-            </TreeView>
-          </TreeView>
+    <PageLayout>
+      <header className={styles.header} data-padding-mode={isDark ? 'dark' : 'light'}>
+        <div className={styles.modeToggle}>
+          <button
+            className={`${styles.modeBtn} ${!isDark ? styles.modeActive : ''}`}
+            onClick={() => setTheme('light')}
+          >
+            Light
+          </button>
+          <span className={styles.modeSep}>/</span>
+          <button
+            className={`${styles.modeBtn} ${isDark ? styles.modeActive : ''}`}
+            onClick={() => setTheme('dark')}
+          >
+            Dark
+          </button>
         </div>
-      </Card>
+        <nav className={styles.nav}>
+          <Link to="/">Home</Link>
+          <Link to="/blog">Blog</Link>
+          <Link to="/about">About</Link>
+          <a href="https://github.com/manav03panchal" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </nav>
+      </header>
+
+      <h1 className={styles.logo}>Humancorp.</h1>
+      <main className={styles.content}>
+        <h1 className={styles.title}>Projects</h1>
+
+        <ol className={styles.simpleList}>
+          {projects.map((project) => (
+            <li key={project.name}>
+              <a href={project.github} target="_blank" rel="noopener noreferrer">
+                {project.name}
+              </a>
+              {project.inDev && <span className={styles.inDev}> [IN DEV]</span>}
+            </li>
+          ))}
+        </ol>
+      </main>
     </PageLayout>
   );
 }
