@@ -7,13 +7,9 @@ const ASCII_ART = ` /  |                     /                      |
 |   )|   )| | )|   )|   )|   )|   )|   )|   )|   )
 |  / |__/ |  / |__/||  / |__/ |__/ |__/||    |__/`;
 
-interface HumanboardProps {
-  onOpenSettings?: (tab: 'mode' | 'fonts' | 'tint') => void;
-}
-
-export function Humanboard({ onOpenSettings }: HumanboardProps) {
+export function Humanboard() {
   return (
-    <PageLayout onOpenSettings={onOpenSettings} showSidebar={false}>
+    <PageLayout>
       <Card title="HUMANBOARD">
         <pre className={styles.ascii}>{ASCII_ART}</pre>
       </Card>
