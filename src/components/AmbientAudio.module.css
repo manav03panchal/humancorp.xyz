@@ -27,3 +27,23 @@
 body[data-padding-mode="dark"] .audioBtn {
   color: #fff;
 }
+
+@media (max-width: 768px) {
+  .audioBtn {
+    position: fixed;
+    top: auto;
+    bottom: 8px;
+    left: 8px;
+    height: auto;
+    font-size: 0.6rem;
+    z-index: 100;
+  }
+}
+
+@media (max-width: 480px) {
+  .audioBtn {
+    bottom: 6px;
+    left: 6px;
+    font-size: 0.5rem;
+  }
+}

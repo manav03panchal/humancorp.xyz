@@ -513,9 +513,9 @@
   .content {
     position: fixed;
     top: 4rem;
-    left: 0.5rem;
-    right: 0.5rem;
-    bottom: 0.5rem;
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
     padding: 1.5rem 1rem;
   }
 
@@ -603,9 +603,9 @@
 
   .content {
     top: 3.5rem;
-    left: 0.25rem;
-    right: 0.25rem;
-    bottom: 0.25rem;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
     padding: 1rem 0.75rem;
   }
 
