@@ -56,6 +56,8 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     document.documentElement.setAttribute('data-theme', theme);
     document.documentElement.setAttribute('data-font', font);
     document.documentElement.setAttribute('data-tint', tint);
+    document.body.setAttribute('data-padding-mode', theme);
+    document.body.style.background = theme === 'dark' ? '#0a0a0a' : '#f5f5f0';
     localStorage.setItem('theme', theme);
     localStorage.setItem('font', font);
     localStorage.setItem('tint', tint);

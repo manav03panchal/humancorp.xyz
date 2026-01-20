@@ -1,14 +1,11 @@
-import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { PageLayout } from '../components/PageLayout';
+import { useTheme } from '../context/ThemeContext';
 import styles from './ContentPage.module.css';
 
 export function About() {
-  const [isDark, setIsDark] = useState(() => localStorage.getItem('theme') === 'dark');
-
-  useEffect(() => {
-    document.body.setAttribute('data-padding-mode', isDark ? 'dark' : 'light');
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-  }, [isDark]);
+  const { theme, setTheme } = useTheme();
+  const isDark = theme === 'dark';
 
   return (
     <PageLayout>
@@ -16,21 +13,22 @@ export function About() {
         <div className={styles.modeToggle}>
           <button
             className={`${styles.modeBtn} ${!isDark ? styles.modeActive : ''}`}
-            onClick={() => setIsDark(false)}
+            onClick={() => setTheme('light')}
           >
             Light
           </button>
           <span className={styles.modeSep}>/</span>
           <button
             className={`${styles.modeBtn} ${isDark ? styles.modeActive : ''}`}
-            onClick={() => setIsDark(true)}
+            onClick={() => setTheme('dark')}
           >
             Dark
           </button>
         </div>
         <nav className={styles.nav}>
-          <a href="/">Home</a>
-          <a href="/projects">Projects</a>
+          <Link to="/">Home</Link>
+          <Link to="/projects">Projects</Link>
+          <Link to="/blog">Blog</Link>
           <a href="https://github.com/manav03panchal" target="_blank" rel="noopener noreferrer">GitHub</a>
         </nav>
       </header>
@@ -40,36 +38,7 @@ export function About() {
         <h1 className={styles.title}>About</h1>
 
         <section className={styles.section}>
-          <p>
-            We're tired of SaaS. Tired of companies paying $50/seat/month for AI
-            wrappers that send their data to someone else's servers. Tired of
-            tools that stop working when you stop paying.
-          </p>
-        </section>
-
-        <section className={styles.section}>
-          <h2>What We Believe</h2>
-          <p>
-            Software should work for you, not against you. We build open source
-            software. No subscriptions. No vendor lock-in. No bullshit.
-          </p>
-        </section>
-
-        <section className={styles.section}>
-          <h2>Our Approach</h2>
-          <p>
-            Every line of code we write is public. Fork it. Modify it. Make it
-            yours. AI should amplify humans, not replace them. Small teams
-            punching way above their weight.
-          </p>
-        </section>
-
-        <section className={styles.section}>
-          <h2>Contact</h2>
-          <p>
-            Who is we? It's always been you. Come back and talk —
-            <a href="mailto:hi@humancorp.xyz">hi@humancorp.xyz</a>
-          </p>
+          <p>Humans just building shit.</p>
         </section>
       </main>
     </PageLayout>

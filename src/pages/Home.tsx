@@ -1,16 +1,14 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { PageLayout } from '../components/PageLayout';
+import { useTheme } from '../context/ThemeContext';
 import styles from './Home.module.css';
 
 export function Home() {
-  const [isDark, setIsDark] = useState(() => localStorage.getItem('theme') === 'dark');
+  const { theme, setTheme } = useTheme();
+  const isDark = theme === 'dark';
   const [time, setTime] = useState(new Date());
   const [weather, setWeather] = useState<{ temp: string; condition: string } | null>(null);
-
-  useEffect(() => {
-    document.body.setAttribute('data-padding-mode', isDark ? 'dark' : 'light');
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-  }, [isDark]);
 
   useEffect(() => {
     const timer = setInterval(() => setTime(new Date()), 1000);
@@ -38,14 +36,14 @@ export function Home() {
         <div className={styles.modeToggle}>
           <button
             className={`${styles.modeBtn} ${!isDark ? styles.modeActive : ''}`}
-            onClick={() => setIsDark(false)}
+            onClick={() => setTheme('light')}
           >
             Light
           </button>
           <span className={styles.modeSep}>/</span>
           <button
             className={`${styles.modeBtn} ${isDark ? styles.modeActive : ''}`}
-            onClick={() => setIsDark(true)}
+            onClick={() => setTheme('dark')}
           >
             Dark
           </button>
@@ -62,8 +60,9 @@ export function Home() {
           )}
         </div>
         <nav className={styles.nav}>
-          <a href="/projects">Projects</a>
-          <a href="/about">About</a>
+          <Link to="/projects">Projects</Link>
+          <Link to="/blog">Blog</Link>
+          <Link to="/about">About</Link>
           <a href="https://github.com/manav03panchal" target="_blank" rel="noopener noreferrer">GitHub</a>
         </nav>
       </header>
