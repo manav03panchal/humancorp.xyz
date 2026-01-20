@@ -429,6 +429,19 @@ ul li {
     --font-size-2xl: 22px;
   }
 
+  body {
+    padding: 1rem;
+  }
+
+  .video-bg {
+    top: 1rem;
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    width: calc(100% - 2rem);
+    height: calc(100% - 2rem);
+  }
+
   .container {
     padding: var(--space-md);
   }

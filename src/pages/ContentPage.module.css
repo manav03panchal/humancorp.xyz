@@ -471,3 +471,80 @@
   opacity: 1;
   background: none;
 }
+
+/* Mobile */
+@media (max-width: 768px) {
+  .header {
+    padding: 0 0.75rem;
+    height: 2.5rem;
+  }
+
+  .modeToggle {
+    gap: 0.15rem;
+  }
+
+  .modeBtn,
+  .modeSep {
+    font-size: 0.7rem;
+  }
+
+  .nav {
+    gap: 0.75rem;
+  }
+
+  .nav a {
+    font-size: 0.7rem;
+  }
+
+  .logo {
+    bottom: 2rem;
+    left: 2rem;
+    font-size: clamp(2rem, 10vw, 4rem);
+  }
+
+  .content {
+    top: 1rem;
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    padding: 2rem 1.5rem;
+  }
+
+  .title {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .section p {
+    font-size: 1.1rem;
+  }
+
+  .simpleList {
+    font-size: 1.1rem;
+  }
+
+  .postList {
+    max-width: 100%;
+  }
+
+  .postTitle {
+    font-size: 1.1rem;
+  }
+
+  .article {
+    max-width: 100%;
+  }
+
+  .articleTitle {
+    font-size: 1.5rem;
+  }
+
+  .articleBody {
+    font-size: 1rem;
+  }
+
+  .articleBody pre {
+    padding: 1rem;
+    font-size: 0.75rem;
+  }
+}
