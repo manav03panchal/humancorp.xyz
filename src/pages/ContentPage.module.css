@@ -475,60 +475,78 @@
 /* Mobile */
 @media (max-width: 768px) {
   .header {
-    padding: 0 0.75rem;
-    height: 2.5rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: auto;
+    padding: 0.5rem;
+    flex-direction: column;
+    gap: 0.5rem;
+    z-index: 100;
   }
 
   .modeToggle {
-    gap: 0.15rem;
+    order: 1;
   }
 
   .modeBtn,
   .modeSep {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
   }
 
   .nav {
-    gap: 0.75rem;
+    order: 2;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   .nav a {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
   }
 
   .logo {
-    bottom: 2rem;
-    left: 2rem;
-    font-size: clamp(2rem, 10vw, 4rem);
+    display: none;
   }
 
   .content {
-    top: 1rem;
-    left: 1rem;
-    right: 1rem;
-    bottom: 1rem;
-    padding: 2rem 1.5rem;
+    position: fixed;
+    top: 4rem;
+    left: 0.5rem;
+    right: 0.5rem;
+    bottom: 0.5rem;
+    padding: 1.5rem 1rem;
   }
 
   .title {
-    font-size: 1.75rem;
-    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
   }
 
   .section p {
-    font-size: 1.1rem;
+    font-size: 1rem;
+    line-height: 1.6;
   }
 
   .simpleList {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 
   .postList {
     max-width: 100%;
   }
 
+  .postCard {
+    padding: 1rem 0;
+  }
+
   .postTitle {
-    font-size: 1.1rem;
+    font-size: 1rem;
+  }
+
+  .postExcerpt {
+    font-size: 0.85rem;
   }
 
   .article {
@@ -536,15 +554,66 @@
   }
 
   .articleTitle {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
   }
 
   .articleBody {
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  .articleBody h2 {
     font-size: 1rem;
+    margin-top: 2rem;
   }
 
   .articleBody pre {
-    padding: 1rem;
-    font-size: 0.75rem;
+    padding: 0.75rem;
+    font-size: 0.7rem;
+    margin: 1rem -0.5rem;
+    border-radius: 0;
+  }
+
+  .articleBody blockquote {
+    margin: 1rem 0;
+    padding-left: 1rem;
+  }
+
+  .backLink {
+    margin-top: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 0.4rem;
+    gap: 0.4rem;
+  }
+
+  .modeBtn,
+  .modeSep,
+  .nav a {
+    font-size: 0.55rem;
+  }
+
+  .nav {
+    gap: 0.6rem;
+  }
+
+  .content {
+    top: 3.5rem;
+    left: 0.25rem;
+    right: 0.25rem;
+    bottom: 0.25rem;
+    padding: 1rem 0.75rem;
+  }
+
+  .title {
+    font-size: 1.25rem;
+  }
+
+  .articleBody pre {
+    font-size: 0.6rem;
   }
 }
