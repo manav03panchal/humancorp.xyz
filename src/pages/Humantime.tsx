@@ -8,7 +8,7 @@ const ASCII_ART = `( _       _ _   _   _  _)_ o  _ _   _
 
 export function Humantime() {
   return (
-    <PageLayout>
+    <PageLayout noScroll>
       <Card title="HUMANTIME">
         <pre className={styles.ascii}>{ASCII_ART}</pre>
       </Card>

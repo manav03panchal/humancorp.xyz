@@ -13,7 +13,7 @@ const ASCII_ART = ` ________   _______      ___    ___ ___  ___  ________
 
 export function Nexus() {
   return (
-    <PageLayout>
+    <PageLayout noScroll>
       <Card title="NEXUS">
         <pre className={styles.ascii}>{ASCII_ART}</pre>
       </Card>

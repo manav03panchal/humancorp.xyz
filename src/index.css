@@ -204,7 +204,7 @@ body {
   color: var(--color-text);
   background: #f5f5f0;
   min-height: 100vh;
-  padding: 3rem;
+  padding: 2rem;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -223,14 +223,16 @@ body[data-padding-mode="dark"] {
 /* Video Background */
 .video-bg {
   position: fixed;
-  top: 3rem;
-  left: 3rem;
-  right: 3rem;
-  bottom: 3rem;
-  width: calc(100% - 6rem);
-  height: calc(100% - 6rem);
+  top: 2rem;
+  left: 2rem;
+  right: 2rem;
+  bottom: 2rem;
+  width: calc(100% - 4rem);
+  height: calc(100% - 4rem);
   z-index: 0;
   pointer-events: none;
+  border-radius: 1rem;
+  overflow: hidden;
 }
 
 .video-bg a[href*="unicorn.studio"],

@@ -31,7 +31,7 @@ export function Home() {
   const formatDate = (d: Date) => d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
 
   return (
-    <PageLayout>
+    <PageLayout noScroll>
       <header className={styles.header} data-padding-mode={isDark ? 'dark' : 'light'}>
         <div className={styles.modeToggle}>
           <button

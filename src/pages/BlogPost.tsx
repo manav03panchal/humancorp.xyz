@@ -18,7 +18,7 @@ export function BlogPost() {
   const { Component, title, date } = post;
 
   return (
-    <PageLayout>
+    <PageLayout noScroll>
       <header className={styles.header} data-padding-mode={isDark ? 'dark' : 'light'}>
         <div className={styles.modeToggle}>
           <button

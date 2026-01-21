@@ -9,7 +9,7 @@ const ASCII_ART = ` /  |                     /                      |
 
 export function Humanboard() {
   return (
-    <PageLayout>
+    <PageLayout noScroll>
       <Card title="HUMANBOARD">
         <pre className={styles.ascii}>{ASCII_ART}</pre>
       </Card>
