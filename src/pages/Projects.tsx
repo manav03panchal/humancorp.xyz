@@ -1,34 +1,51 @@
-import { Link } from 'react-router-dom';
-import { PageLayout } from '../components/PageLayout';
-import { useTheme } from '../context/ThemeContext';
-import styles from './ContentPage.module.css';
+import { Link } from "react-router-dom";
+import { PageLayout } from "../components/PageLayout";
+import { useTheme } from "../context/ThemeContext";
+import styles from "./ContentPage.module.css";
 
 const projects = [
-  { name: 'Humanboard', github: 'https://github.com/manav03panchal/humanboard' },
-  { name: 'Humantime', github: 'https://github.com/manav03panchal/humantime' },
-  { name: 'Nexus', github: 'https://github.com/manav03panchal/nexus' },
-  { name: 'Humanjournal', github: 'https://github.com/manav03panchal/humanjournal', inDev: true },
-  { name: 'Humaninput', github: 'https://github.com/manav03panchal/humaninput', inDev: true },
+  {
+    name: "Humanboard",
+    github: "https://github.com/humancorp-humancorp/humanboard",
+  },
+  {
+    name: "Humantime",
+    github: "https://github.com/humancorp-humancorp/humantime",
+  },
+  { name: "Nexus", github: "https://github.com/humancorp-humancorp/nexus" },
+  {
+    name: "Humanjournal",
+    github: "https://github.com/humancorp-humancorp/humanjournal",
+    inDev: true,
+  },
+  {
+    name: "Humaninput",
+    github: "https://github.com/humancorp-humancorp/humaninput",
+    inDev: true,
+  },
 ];
 
 export function Projects() {
   const { theme, setTheme } = useTheme();
-  const isDark = theme === 'dark';
+  const isDark = theme === "dark";
 
   return (
     <PageLayout noScroll>
-      <header className={styles.header} data-padding-mode={isDark ? 'dark' : 'light'}>
+      <header
+        className={styles.header}
+        data-padding-mode={isDark ? "dark" : "light"}
+      >
         <div className={styles.modeToggle}>
           <button
-            className={`${styles.modeBtn} ${!isDark ? styles.modeActive : ''}`}
-            onClick={() => setTheme('light')}
+            className={`${styles.modeBtn} ${!isDark ? styles.modeActive : ""}`}
+            onClick={() => setTheme("light")}
           >
             Light
           </button>
           <span className={styles.modeSep}>/</span>
           <button
-            className={`${styles.modeBtn} ${isDark ? styles.modeActive : ''}`}
-            onClick={() => setTheme('dark')}
+            className={`${styles.modeBtn} ${isDark ? styles.modeActive : ""}`}
+            onClick={() => setTheme("dark")}
           >
             Dark
           </button>
@@ -37,7 +54,13 @@ export function Projects() {
           <Link to="/">Home</Link>
           <Link to="/blog">Blog</Link>
           <Link to="/about">About</Link>
-          <a href="https://github.com/manav03panchal" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a
+            href="https://github.com/humancorp-humancorp"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </a>
         </nav>
       </header>
 
@@ -48,7 +71,11 @@ export function Projects() {
         <ol className={styles.simpleList}>
           {projects.map((project) => (
             <li key={project.name}>
-              <a href={project.github} target="_blank" rel="noopener noreferrer">
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 {project.name}
               </a>
               {project.inDev && <span className={styles.inDev}> [IN DEV]</span>}

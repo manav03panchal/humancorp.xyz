@@ -1,26 +1,30 @@
-import { Link } from 'react-router-dom';
-import { PageLayout } from '../components/PageLayout';
-import { useTheme } from '../context/ThemeContext';
-import styles from './ContentPage.module.css';
+import { Link } from "react-router-dom";
+import { PageLayout } from "../components/PageLayout";
+import { useTheme } from "../context/ThemeContext";
+import { AboutContent } from "../content/about";
+import styles from "./ContentPage.module.css";
 
 export function About() {
   const { theme, setTheme } = useTheme();
-  const isDark = theme === 'dark';
+  const isDark = theme === "dark";
 
   return (
     <PageLayout noScroll>
-      <header className={styles.header} data-padding-mode={isDark ? 'dark' : 'light'}>
+      <header
+        className={styles.header}
+        data-padding-mode={isDark ? "dark" : "light"}
+      >
         <div className={styles.modeToggle}>
           <button
-            className={`${styles.modeBtn} ${!isDark ? styles.modeActive : ''}`}
-            onClick={() => setTheme('light')}
+            className={`${styles.modeBtn} ${!isDark ? styles.modeActive : ""}`}
+            onClick={() => setTheme("light")}
           >
             Light
           </button>
           <span className={styles.modeSep}>/</span>
           <button
-            className={`${styles.modeBtn} ${isDark ? styles.modeActive : ''}`}
-            onClick={() => setTheme('dark')}
+            className={`${styles.modeBtn} ${isDark ? styles.modeActive : ""}`}
+            onClick={() => setTheme("dark")}
           >
             Dark
           </button>
@@ -29,7 +33,13 @@ export function About() {
           <Link to="/">Home</Link>
           <Link to="/projects">Projects</Link>
           <Link to="/blog">Blog</Link>
-          <a href="https://github.com/manav03panchal" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a
+            href="https://github.com/humancorp-humancorp"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </a>
         </nav>
       </header>
 
@@ -37,9 +47,9 @@ export function About() {
       <main className={styles.content}>
         <h1 className={styles.title}>About</h1>
 
-        <section className={styles.section}>
-          <p>Humans just building shit.</p>
-        </section>
+        <div className={styles.articleBody}>
+          <AboutContent />
+        </div>
       </main>
     </PageLayout>
   );

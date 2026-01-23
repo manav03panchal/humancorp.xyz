@@ -10,6 +10,10 @@ dist
 *.swo
 .idea
 
+# AI tools
+.beads
+.claude
+
 # OS
 .DS_Store
 Thumbs.db

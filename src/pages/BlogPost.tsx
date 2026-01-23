@@ -1,13 +1,13 @@
-import { Link, useParams, Navigate } from 'react-router-dom';
-import { PageLayout } from '../components/PageLayout';
-import { useTheme } from '../context/ThemeContext';
-import { getPostBySlug } from '../content/blog';
-import styles from './ContentPage.module.css';
+import { Link, useParams, Navigate } from "react-router-dom";
+import { PageLayout } from "../components/PageLayout";
+import { useTheme } from "../context/ThemeContext";
+import { getPostBySlug } from "../content/blog";
+import styles from "./ContentPage.module.css";
 
 export function BlogPost() {
   const { slug } = useParams<{ slug: string }>();
   const { theme, setTheme } = useTheme();
-  const isDark = theme === 'dark';
+  const isDark = theme === "dark";
 
   const post = slug ? getPostBySlug(slug) : null;
 
@@ -19,18 +19,21 @@ export function BlogPost() {
 
   return (
     <PageLayout noScroll>
-      <header className={styles.header} data-padding-mode={isDark ? 'dark' : 'light'}>
+      <header
+        className={styles.header}
+        data-padding-mode={isDark ? "dark" : "light"}
+      >
         <div className={styles.modeToggle}>
           <button
-            className={`${styles.modeBtn} ${!isDark ? styles.modeActive : ''}`}
-            onClick={() => setTheme('light')}
+            className={`${styles.modeBtn} ${!isDark ? styles.modeActive : ""}`}
+            onClick={() => setTheme("light")}
           >
             Light
           </button>
           <span className={styles.modeSep}>/</span>
           <button
-            className={`${styles.modeBtn} ${isDark ? styles.modeActive : ''}`}
-            onClick={() => setTheme('dark')}
+            className={`${styles.modeBtn} ${isDark ? styles.modeActive : ""}`}
+            onClick={() => setTheme("dark")}
           >
             Dark
           </button>
@@ -39,7 +42,13 @@ export function BlogPost() {
           <Link to="/">Home</Link>
           <Link to="/blog">Blog</Link>
           <Link to="/about">About</Link>
-          <a href="https://github.com/manav03panchal" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a
+            href="https://github.com/humancorp-humancorp"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </a>
         </nav>
       </header>
 
@@ -51,7 +60,9 @@ export function BlogPost() {
           <div className={styles.articleBody}>
             <Component />
           </div>
-          <Link to="/blog" className={styles.backLink}>Back to Blog</Link>
+          <Link to="/blog" className={styles.backLink}>
+            Back to Blog
+          </Link>
         </article>
       </main>
     </PageLayout>

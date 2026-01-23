@@ -1,27 +1,30 @@
-import { Link } from 'react-router-dom';
-import { PageLayout } from '../components/PageLayout';
-import { useTheme } from '../context/ThemeContext';
-import { posts } from '../content/blog';
-import styles from './ContentPage.module.css';
+import { Link } from "react-router-dom";
+import { PageLayout } from "../components/PageLayout";
+import { useTheme } from "../context/ThemeContext";
+import { posts } from "../content/blog";
+import styles from "./ContentPage.module.css";
 
 export function Blog() {
   const { theme, setTheme } = useTheme();
-  const isDark = theme === 'dark';
+  const isDark = theme === "dark";
 
   return (
     <PageLayout noScroll>
-      <header className={styles.header} data-padding-mode={isDark ? 'dark' : 'light'}>
+      <header
+        className={styles.header}
+        data-padding-mode={isDark ? "dark" : "light"}
+      >
         <div className={styles.modeToggle}>
           <button
-            className={`${styles.modeBtn} ${!isDark ? styles.modeActive : ''}`}
-            onClick={() => setTheme('light')}
+            className={`${styles.modeBtn} ${!isDark ? styles.modeActive : ""}`}
+            onClick={() => setTheme("light")}
           >
             Light
           </button>
           <span className={styles.modeSep}>/</span>
           <button
-            className={`${styles.modeBtn} ${isDark ? styles.modeActive : ''}`}
-            onClick={() => setTheme('dark')}
+            className={`${styles.modeBtn} ${isDark ? styles.modeActive : ""}`}
+            onClick={() => setTheme("dark")}
           >
             Dark
           </button>
@@ -30,7 +33,13 @@ export function Blog() {
           <Link to="/">Home</Link>
           <Link to="/projects">Projects</Link>
           <Link to="/about">About</Link>
-          <a href="https://github.com/manav03panchal" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a
+            href="https://github.com/humancorp-humancorp"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </a>
         </nav>
       </header>
 
@@ -40,7 +49,11 @@ export function Blog() {
 
         <div className={styles.postList}>
           {posts.map((post) => (
-            <Link key={post.slug} to={`/blog/${post.slug}`} className={styles.postCard}>
+            <Link
+              key={post.slug}
+              to={`/blog/${post.slug}`}
+              className={styles.postCard}
+            >
               <span className={styles.postDate}>{post.date}</span>
               <h2 className={styles.postTitle}>{post.title}</h2>
               <p className={styles.postExcerpt}>{post.excerpt}</p>
