@@ -1,29 +1,8 @@
 import { Link } from "react-router-dom";
 import { PageLayout } from "../components/PageLayout";
 import { useTheme } from "../context/ThemeContext";
+import { projects } from "../content/projects";
 import styles from "./ContentPage.module.css";
-
-const projects = [
-  {
-    name: "Humanboard",
-    github: "https://github.com/humancorp-humancorp/humanboard",
-  },
-  {
-    name: "Humantime",
-    github: "https://github.com/humancorp-humancorp/humantime",
-  },
-  { name: "Nexus", github: "https://github.com/humancorp-humancorp/nexus" },
-  {
-    name: "Humanjournal",
-    github: "https://github.com/humancorp-humancorp/humanjournal",
-    inDev: true,
-  },
-  {
-    name: "Humaninput",
-    github: "https://github.com/humancorp-humancorp/humaninput",
-    inDev: true,
-  },
-];
 
 export function Projects() {
   const { theme, setTheme } = useTheme();
@@ -70,15 +49,11 @@ export function Projects() {
 
         <ol className={styles.simpleList}>
           {projects.map((project) => (
-            <li key={project.name}>
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {project.name}
-              </a>
-              {project.inDev && <span className={styles.inDev}> [IN DEV]</span>}
+            <li key={project.slug}>
+              <Link to={`/projects/${project.slug}`}>{project.name}</Link>
+              {project.status === "in-dev" && (
+                <span className={styles.inDev}> [IN DEV]</span>
+              )}
             </li>
           ))}
         </ol>
